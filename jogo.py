@@ -1,6 +1,7 @@
 import pygame
 import random
 from config import *
+from init_screen import init_screen
 
 pygame.init()
 pygame.mixer.init()
@@ -10,8 +11,8 @@ pygame.display.set_caption('-')
 
 state = INIT
 while state != QUIT:
-    #if state == INIT:
-        #state = init_screen(window)
+    if state == INIT:
+        state = init_screen(window)
     #elif state == GAME:
         #gameplayed = game_screen(window)
     #elif state == INFO:
