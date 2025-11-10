@@ -3,6 +3,8 @@ import random
 from config import *
 from init_screen import init_screen
 from info_screen import info_screen
+from game_screen import game_screen
+from game_over_screen import game_over_screen
 
 pygame.init()
 pygame.mixer.init()
@@ -16,10 +18,10 @@ while state != QUIT:
         state = init_screen(window)
     elif state == INFO:
         state = info_screen(window)
-    #elif state == GAME:
-        #gameplayed = game_screen(window)
-    #elif state == GAME_OVER:
-        #state = game_over_screen(window)
+    elif state == GAME:
+        state = game_screen(window)
+    elif state == GAME_OVER:
+        state = game_over_screen(window)
     else:
         state = QUIT
 

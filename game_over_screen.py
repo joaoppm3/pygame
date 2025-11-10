@@ -2,7 +2,7 @@ import pygame
 from os import path
 from config import *
 
-def init_screen(window):
+def game_over_screen(window):
     clock = pygame.time.Clock()
 
     running = True
@@ -13,19 +13,15 @@ def init_screen(window):
             if event.type == pygame.QUIT:
                 state = QUIT
                 running = False
-
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
-                    state = GAME
-                    running = False
-                if event.key == pygame.K_SPACE:
-                    state = INFO
-                    running = False
                 if event.key == pygame.K_ESCAPE:
                     state = QUIT
                     running = False
+                if event.key == pygame.K_RETURN:
+                    state = INIT
+                    running = False
 
-        window.fill(WHITE)
+        window.fill(BLACK)
 
         pygame.display.flip()
 
