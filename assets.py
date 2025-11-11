@@ -14,5 +14,6 @@ def load_assets():
     assets[PLAYER_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'player.png')).convert_alpha()
 
     assets[PLAYER_IMG] = pygame.transform.scale(assets[PLAYER_IMG], (PLAYER_WIDTH, PLAYER_HEIGHT))
-
+    assets[GRASS_IMG] = pygame.transform.scale(assets[GRASS_IMG], (PATH_WIDTH, PATH_HEIGHT))
+    assets[STREET_IMG] = pygame.transform.scale(assets[STREET_IMG], (PATH_WIDTH, PATH_HEIGHT))
     return assets

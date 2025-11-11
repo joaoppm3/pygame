@@ -49,7 +49,19 @@ def game_screen(window):
 
         all_sprites.update()
         
-        window.fill(BLUE)
+        window.fill(YELLOW)
+        window.blit(assets[STREET_IMG], (0, HEIGHT - 6 * PATH_DISTANCE))
+
+
+        window.blit(assets[GRASS_IMG], (0, HEIGHT - 5 * PATH_DISTANCE))
+        window.blit(assets[STREET_IMG], (0, HEIGHT - 4 * PATH_DISTANCE))
+
+        window.blit(assets[GRASS_IMG], (0, HEIGHT - 3 * PATH_DISTANCE))
+
+        window.blit(assets[STREET_IMG], (0, HEIGHT - 2 * PATH_DISTANCE))
+
+        window.blit(assets[GRASS_IMG], (0, HEIGHT - PATH_DISTANCE))
+
 
         all_sprites.draw(window)
 
