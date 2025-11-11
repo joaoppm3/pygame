@@ -37,21 +37,25 @@ def game_screen(window):
                     keys_down[event.key] = True
                     if event.key == pygame.K_UP:
                         player.rect.y -= 120
+                        player.direction = 'b'
                         if player.rect.top == HEIGHT * 1 / 5:
                             cenario *= -1
                     if event.key == pygame.K_DOWN:
                         player.rect.y += 120
+                        player.direction = 'f'
                     if event.key == pygame.K_LEFT:
                         player.rect.x -= 120
+                        player.direction = 'l'
                     if event.key == pygame.K_RIGHT:
                         player.rect.x += 120
+                        player.direction = 'r'
 
                         
                     if event.key == pygame.K_ESCAPE:
                         state = QUIT
                         return state
 
-        all_sprites.update()
+        player.update(assets)
 
 
         if cenario == 1:

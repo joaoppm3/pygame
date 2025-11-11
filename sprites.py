@@ -6,7 +6,9 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, groups, assets):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[PLAYER_IMG]
+        self.direction = 'f'
+
+        self.image = assets[PLAYER_F]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
 
@@ -15,7 +17,7 @@ class Player(pygame.sprite.Sprite):
         self.groups = groups
         self.assets = assets
 
-    def update(self):
+    def update(self, assets):
         
         if self.rect.right > WIDTH:
             self.rect.right = WIDTH
@@ -26,4 +28,6 @@ class Player(pygame.sprite.Sprite):
             self.rect.bottom = HEIGHT
         if self.rect.top < HEIGHT * 2 / 5:
             self.rect.top = HEIGHT * 2 / 5
-    
+
+        self.image = assets['player'+self.direction]
+        self.mask = pygame.mask.from_surface(self.image)
