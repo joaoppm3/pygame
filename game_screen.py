@@ -34,9 +34,9 @@ def game_screen(window):
                 if event.type == pygame.KEYDOWN:
                     keys_down[event.key] = True
                     if event.key == pygame.K_UP:
-                        player.rect.y += 120
-                    if event.key == pygame.K_DOWN:
                         player.rect.y -= 120
+                    if event.key == pygame.K_DOWN:
+                        player.rect.y += 120
                     if event.key == pygame.K_LEFT:
                         player.rect.x -= 120
                     if event.key == pygame.K_RIGHT:
