@@ -10,7 +10,7 @@ pygame.init()
 pygame.mixer.init()
 
 window = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('-')
+pygame.display.set_caption('.')
 
 state = INIT
 while state != QUIT:
