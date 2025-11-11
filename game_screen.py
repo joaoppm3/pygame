@@ -1,28 +1,62 @@
 import pygame
 from config import *
+from assets import *
+from sprites import *
 
 def game_screen(window):
     clock = pygame.time.Clock()
 
-    running = True
-    while running:
+    assets = load_assets()
+
+    all_sprites = pygame.sprite.Group()
+    groups = {}
+    groups['all_sprites'] = all_sprites
+
+    player = Player(groups, assets)
+    all_sprites.add(player)
+
+    PLAY = 0
+    HIT = 1
+    OVER = 2
+    gameplay = PLAY
+
+    keys_down = {}
+
+    while gameplay != OVER:
         clock.tick(FPS)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 state = QUIT
-                running = False
+                return state
             
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_g:
-                    state = GAME_OVER
-                    running = False
-                if event.key == pygame.K_ESCAPE:
-                    state = QUIT
-                    running = False
+            if gameplay == PLAY:
+                if event.type == pygame.KEYDOWN:
+                    keys_down[event.key] = True
+                    if event.key == pygame.K_UP:
+                        player.rect.y += 120
+                    if event.key == pygame.K_DOWN:
+                        player.rect.y -= 120
+                    if event.key == pygame.K_LEFT:
+                        player.rect.x -= 120
+                    if event.key == pygame.K_RIGHT:
+                        player.rect.x += 120
 
+                        
+                    if event.key == pygame.K_ESCAPE:
+                        state = QUIT
+                        return state
+
+        all_sprites.update()
+        
         window.fill(BLUE)
 
-        pygame.display.flip()
+        all_sprites.draw(window)
+
+
+
+        pygame.display.update()
+
+    state = GAME_OVER
 
     return state
