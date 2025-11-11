@@ -24,6 +24,6 @@ class Player(pygame.sprite.Sprite):
         
         if self.rect.bottom > HEIGHT:
             self.rect.bottom = HEIGHT
-        if self.rect.top < 0:
-            self.rect.top = 0
+        if self.rect.top < HEIGHT * 2 / 5:
+            self.rect.top = HEIGHT * 2 / 5
     

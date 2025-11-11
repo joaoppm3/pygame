@@ -22,6 +22,8 @@ def game_screen(window):
 
     keys_down = {}
 
+    cenario = 1
+
     while gameplay != OVER:
         clock.tick(FPS)
 
@@ -35,6 +37,8 @@ def game_screen(window):
                     keys_down[event.key] = True
                     if event.key == pygame.K_UP:
                         player.rect.y -= 120
+                        if player.rect.top == HEIGHT * 1 / 5:
+                            cenario *= -1
                     if event.key == pygame.K_DOWN:
                         player.rect.y += 120
                     if event.key == pygame.K_LEFT:
@@ -48,19 +52,27 @@ def game_screen(window):
                         return state
 
         all_sprites.update()
-        
-        window.fill(YELLOW)
-        window.blit(assets[STREET_IMG], (0, HEIGHT - 6 * PATH_DISTANCE))
 
 
-        window.blit(assets[GRASS_IMG], (0, HEIGHT - 5 * PATH_DISTANCE))
-        window.blit(assets[STREET_IMG], (0, HEIGHT - 4 * PATH_DISTANCE))
+        if cenario == 1:
+            window.fill(YELLOW)
 
-        window.blit(assets[GRASS_IMG], (0, HEIGHT - 3 * PATH_DISTANCE))
+            window.blit(assets[STREET_IMG], (0, HEIGHT - 6 * PATH_DISTANCE))
+            window.blit(assets[GRASS_IMG], (0, HEIGHT - 5 * PATH_DISTANCE))
+            window.blit(assets[STREET_IMG], (0, HEIGHT - 4 * PATH_DISTANCE))
+            window.blit(assets[GRASS_IMG], (0, HEIGHT - 3 * PATH_DISTANCE))
+            window.blit(assets[STREET_IMG], (0, HEIGHT - 2 * PATH_DISTANCE))
+            window.blit(assets[GRASS_IMG], (0, HEIGHT - PATH_DISTANCE))
 
-        window.blit(assets[STREET_IMG], (0, HEIGHT - 2 * PATH_DISTANCE))
+        else:
+            window.fill(YELLOW)
 
-        window.blit(assets[GRASS_IMG], (0, HEIGHT - PATH_DISTANCE))
+            window.blit(assets[GRASS_IMG], (0, HEIGHT - 6 * PATH_DISTANCE))
+            window.blit(assets[STREET_IMG], (0, HEIGHT - 5 * PATH_DISTANCE))
+            window.blit(assets[GRASS_IMG], (0, HEIGHT - 4 * PATH_DISTANCE))
+            window.blit(assets[STREET_IMG], (0, HEIGHT - 3 * PATH_DISTANCE))
+            window.blit(assets[GRASS_IMG], (0, HEIGHT - 2 * PATH_DISTANCE))
+            window.blit(assets[STREET_IMG], (0, HEIGHT - 1 * PATH_DISTANCE))
 
 
         all_sprites.draw(window)
