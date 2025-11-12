@@ -8,7 +8,7 @@ PLAYER_F = 'playerf'
 PLAYER_B = 'playerb'
 PLAYER_R = 'playerr'
 PLAYER_L = 'playerl'
-
+CAR = 'car'
 
 def load_assets():
     assets = {}
@@ -19,12 +19,14 @@ def load_assets():
     assets[PLAYER_B] = pygame.image.load(os.path.join(IMG_DIR, 'player_back.png')).convert_alpha()
     assets[PLAYER_R] = pygame.image.load(os.path.join(IMG_DIR, 'player_right.png')).convert_alpha()
     assets[PLAYER_L] = pygame.image.load(os.path.join(IMG_DIR, 'player_left.png')).convert_alpha()
+    assets[CAR] = pygame.image.load(os.path.join(IMG_DIR, 'carro_bd.png')).convert_alpha()
 
     assets[PLAYER_F] = pygame.transform.scale(assets[PLAYER_F], (PLAYER_WIDTH, PLAYER_HEIGHT))
     assets[PLAYER_B] = pygame.transform.scale(assets[PLAYER_B], (PLAYER_WIDTH, PLAYER_HEIGHT))
     assets[PLAYER_R] = pygame.transform.scale(assets[PLAYER_R], (PLAYER_WIDTH, PLAYER_HEIGHT))
     assets[PLAYER_L] = pygame.transform.scale(assets[PLAYER_L], (PLAYER_WIDTH, PLAYER_HEIGHT))
-    
+    assets[CAR] = pygame.transform.scale(assets[CAR], (CAR_WIDTH, CAR_HEIGHT))
+
     assets[GRASS_IMG] = pygame.transform.scale(assets[GRASS_IMG], (PATH_WIDTH, PATH_HEIGHT))
     assets[STREET_IMG] = pygame.transform.scale(assets[STREET_IMG], (PATH_WIDTH, PATH_HEIGHT))
     return assets
