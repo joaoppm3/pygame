@@ -46,7 +46,7 @@ def game_screen(window):
                         player.direction = 'b'
                         if player.rect.top == HEIGHT * 1 / 5:
                             cenario *= -1
-                            score += 10
+                            score += 5
                             for i in range (0, 6):
                                 cars[i].down()
                     if event.key == pygame.K_DOWN:
@@ -100,10 +100,13 @@ def game_screen(window):
 
         all_sprites.draw(window)
 
-
+        text_score = assets[bit_FONT].render('{:05d}'.format(score), True, BLACK)
+        text_score_rect = text_score.get_rect()
+        text_score_rect.bottomright = (WIDTH - 10, HEIGHT - 10)
+        window.blit(text_score, text_score_rect)
 
         pygame.display.update()
 
     state = GAME_OVER
 
-    return state
+    return [state, score]

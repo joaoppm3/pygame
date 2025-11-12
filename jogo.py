@@ -10,18 +10,24 @@ pygame.init()
 pygame.mixer.init()
 
 window = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('.')
+pygame.display.set_caption('Por que Atravessou?')
 
-state = GAME
+highscore = 0
+
+state = INIT
 while state != QUIT:
     if state == INIT:
         state = init_screen(window)
     elif state == INFO:
         state = info_screen(window)
     elif state == GAME:
-        state = game_screen(window)
+        gameplayed = game_screen(window)
+        state = gameplayed[0]
+        score = gameplayed[1]
     elif state == GAME_OVER:
-        state = game_over_screen(window)
+        if score > highscore:
+            highscore = score
+        state = game_over_screen(window, score, highscore)
     else:
         state = QUIT
 

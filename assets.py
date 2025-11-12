@@ -15,6 +15,8 @@ CAR_RE = 're'
 CAR_YE = 'ye'
 CAR_BE = 'be'
 
+bit_FONT = 'bit_font'
+
 def load_assets():
     assets = {}
 
@@ -44,4 +46,6 @@ def load_assets():
 
     assets[GRASS_IMG] = pygame.transform.scale(assets[GRASS_IMG], (PATH_WIDTH, PATH_HEIGHT))
     assets[STREET_IMG] = pygame.transform.scale(assets[STREET_IMG], (PATH_WIDTH, PATH_HEIGHT))
+
+    assets[bit_FONT] = pygame.font.Font(os.path.join(FNT_DIR, 'PressStart2p.ttf'), 28)
     return assets
