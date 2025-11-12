@@ -27,7 +27,7 @@ def game_screen(window):
     gameplay = PLAY
 
     keys_down = {}
-
+    score = 0
     cenario = 1
 
     while gameplay != OVER:
@@ -46,6 +46,7 @@ def game_screen(window):
                         player.direction = 'b'
                         if player.rect.top == HEIGHT * 1 / 5:
                             cenario *= -1
+                            score += 10
                             for i in range (0, 6):
                                 cars[i].down()
                     if event.key == pygame.K_DOWN:
@@ -63,8 +64,19 @@ def game_screen(window):
                         state = QUIT
                         return state
 
-        all_sprites.update()
+        all_sprites.update(score)
 
+        if gameplay == PLAY:
+
+            hits = pygame.sprite.spritecollide(player, all_cars, True, pygame.sprite.collide_mask)
+            if len(hits) > 0:
+                player.kill()
+                gameplay = HIT
+        
+        if gameplay == HIT:
+            pygame.time.delay(1000)
+            gameplay = OVER
+        
         if cenario == 1:
             window.fill(YELLOW)
 

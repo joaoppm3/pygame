@@ -17,7 +17,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.bottom = HEIGHT
         self.assets = assets
 
-    def update(self):
+    def update(self, score):
         
         if self.rect.right > WIDTH:
             self.rect.right = WIDTH
@@ -36,17 +36,17 @@ class Obstacle(pygame.sprite.Sprite):
     def __init__(self, assets, i):
         pygame.sprite.Sprite.__init__(self)
 
-        speed = random.randint(8, 15)
+        speed = random.randint(5, 15)
 
         if i % 2 == 0:
             direcao = 'e'
             posix = WIDTH
-            posiy = -120 + 240 * (i / 2) - 5
+            posiy = -120 + 240 * (i / 2)
             speed *= -1
         else:
             direcao = 'd'
             posix = 0 - CAR_WIDTH
-            posiy = -120 + 240 * (i // 2) + 50
+            posiy = -120 + 240 * (i // 2) + 48
             speed = speed
 
         colour = random.randint(1, 3)
@@ -66,10 +66,10 @@ class Obstacle(pygame.sprite.Sprite):
         self.rect.y = posiy
         self.speed = speed
 
-    def update(self):
+    def update(self, score):
         self.rect.x += self.speed
 
-        speed = random.randint(8, 15)
+        speed = random.randint(5, 15) + score / 10
 
         colour = random.randint(1, 3)
         if colour == 1:
@@ -86,7 +86,7 @@ class Obstacle(pygame.sprite.Sprite):
                 self.rect.x = WIDTH
                 self.speed = - speed
             if self.rect.centery > HEIGHT:
-                self.rect.y = -120 - 20
+                self.rect.y = -120
         else:
             if self.rect.left > WIDTH:
                 self.image = self.assets[colour+self.direcao]
@@ -94,7 +94,7 @@ class Obstacle(pygame.sprite.Sprite):
                 self.rect.right = 0
                 self.speed = speed
             if self.rect.top > HEIGHT:
-                self.rect.y = -120 + 35
+                self.rect.y = -120 + 48
 
     def down(self):
         self.rect.y += 120
