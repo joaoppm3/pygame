@@ -1,7 +1,9 @@
+#Importa bibliotecas
 import pygame
 import os
 from config import *
 
+#Nomes para os dicionários
 STREET_IMG = 'street'
 GRASS_IMG = 'grass'
 PLAYER_F = 'playerf'
@@ -23,6 +25,7 @@ SOM_MORTE = 'morte_snd'
 def load_assets():
     assets = {}
 
+    #Carrega as imagens
     assets[GRASS_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'grama.png')).convert_alpha()
     assets[STREET_IMG] = pygame.image.load(os.path.join(IMG_DIR, 'rua.png')).convert_alpha()
     assets[PLAYER_F] = pygame.image.load(os.path.join(IMG_DIR, 'player.png')).convert_alpha()
@@ -36,6 +39,7 @@ def load_assets():
     assets[CAR_YE] = pygame.image.load(os.path.join(IMG_DIR, 'carro_ye.png')).convert_alpha()
     assets[CAR_BE] = pygame.image.load(os.path.join(IMG_DIR, 'carro_be.png')).convert_alpha()
 
+    #Dimensiona as imagens
     assets[PLAYER_F] = pygame.transform.scale(assets[PLAYER_F], (PLAYER_WIDTH, PLAYER_HEIGHT))
     assets[PLAYER_B] = pygame.transform.scale(assets[PLAYER_B], (PLAYER_WIDTH, PLAYER_HEIGHT))
     assets[PLAYER_R] = pygame.transform.scale(assets[PLAYER_R], (PLAYER_WIDTH, PLAYER_HEIGHT))
@@ -47,11 +51,14 @@ def load_assets():
     assets[CAR_YE] = pygame.transform.scale(assets[CAR_YE], (CAR_WIDTH, CAR_HEIGHT))
     assets[CAR_BE] = pygame.transform.scale(assets[CAR_BE], (CAR_WIDTH, CAR_HEIGHT))
 
+    #Partes do cenário
     assets[GRASS_IMG] = pygame.transform.scale(assets[GRASS_IMG], (PATH_WIDTH, PATH_HEIGHT))
     assets[STREET_IMG] = pygame.transform.scale(assets[STREET_IMG], (PATH_WIDTH, PATH_HEIGHT))
 
+    #Fonte
     assets[bit_FONT] = pygame.font.Font(os.path.join(FNT_DIR, 'PressStart2p.ttf'), 28)
 
+    #Sons
     assets[SOM_INICIO] = pygame.mixer.Sound(os.path.join(SND_DIR, 'começo.wav'))
     assets[SOM_MORTE] = pygame.mixer.Sound(os.path.join(SND_DIR, 'morte.mp3'))
 

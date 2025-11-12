@@ -1,17 +1,21 @@
+#Importa bibliotecas
 import pygame
 from os import path
 from config import *
 from assets import *
 
 def init_screen(window):
+    #Inicialização
     clock = pygame.time.Clock()
 
     assets = load_assets()
 
+    #Imagem de fundo
     background = pygame.image.load(path.join(IMG_DIR, 'initscreen.png')).convert()
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))
     background_rect = background.get_rect()
 
+    #Música do jogo (Continua durante a tela de jogo)
     pygame.mixer.music.load(os.path.join(SND_DIR, 'musicajogo.mp3'))
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(loops=-1)
@@ -20,29 +24,30 @@ def init_screen(window):
         clock.tick(FPS)
 
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT: #Fecha janela
                 state = QUIT
                 running = False
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RETURN: #Começa o jogo
                     state = GAME
                     running = False
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE: #Infos
                     state = INFO
                     running = False
-                if event.key == pygame.K_ESCAPE:
+                if event.key == pygame.K_ESCAPE: #Fecha janela
                     state = QUIT
                     running = False
 
         window.fill(WHITE)
-        window.blit(background, background_rect)
+        window.blit(background, background_rect) #Coloca a imagem de fundo
 
         #Textos de instrução
+        #Jogar
         jogar_texto = assets[bit_FONT].render('Pressione ENTER para jogar', True, BLACK)
         jogar_texto_rect = jogar_texto.get_rect()
         jogar_texto_rect.midbottom = (WIDTH/2, HEIGHT - 100)
-
+        #Infos
         infos_texto = assets[bit_FONT].render('Pressione BARRA DE ESPAÇO para informações', True, BLACK)
         infos_texto_rect = infos_texto.get_rect()
         infos_texto_rect.midbottom = (WIDTH/2, HEIGHT - 50)
