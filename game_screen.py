@@ -8,6 +8,8 @@ def game_screen(window):
 
     assets = load_assets()
 
+    assets[SOM_INICIO].play()
+
     all_sprites = pygame.sprite.Group()
     all_cars = pygame.sprite.Group()
     cars = [0] * 6
@@ -72,7 +74,8 @@ def game_screen(window):
             if len(hits) > 0:
                 player.kill()
                 gameplay = HIT
-        
+                assets[SOM_MORTE].play()
+
         if gameplay == HIT:
             pygame.time.delay(1000)
             gameplay = OVER

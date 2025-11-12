@@ -12,6 +12,9 @@ def game_over_screen(window, score, highscore):
     background = pygame.transform.scale(background, (WIDTH, HEIGHT))
     background_rect = background.get_rect()
 
+    pygame.mixer.music.load(os.path.join(SND_DIR, 'musicagameover.mp3'))
+    pygame.mixer.music.set_volume(0.5)
+    pygame.mixer.music.play(loops=-1)
     running = True
     while running:
         clock.tick(FPS)

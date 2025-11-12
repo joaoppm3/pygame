@@ -17,6 +17,9 @@ CAR_BE = 'be'
 
 bit_FONT = 'bit_font'
 
+SOM_INICIO = 'inicio_snd'
+SOM_MORTE = 'morte_snd'
+
 def load_assets():
     assets = {}
 
@@ -48,4 +51,8 @@ def load_assets():
     assets[STREET_IMG] = pygame.transform.scale(assets[STREET_IMG], (PATH_WIDTH, PATH_HEIGHT))
 
     assets[bit_FONT] = pygame.font.Font(os.path.join(FNT_DIR, 'PressStart2p.ttf'), 28)
+
+    assets[SOM_INICIO] = pygame.mixer.Sound(os.path.join(SND_DIR, 'começo.wav'))
+    assets[SOM_MORTE] = pygame.mixer.Sound(os.path.join(SND_DIR, 'morte.mp3'))
+
     return assets
