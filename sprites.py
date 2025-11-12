@@ -1,4 +1,5 @@
 import pygame 
+import random
 from config import *
 from assets import *
 
@@ -35,22 +36,65 @@ class Obstacle(pygame.sprite.Sprite):
     def __init__(self, assets, i):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = assets[CAR]
+        speed = random.randint(8, 15)
+
+        if i % 2 == 0:
+            direcao = 'e'
+            posix = WIDTH
+            posiy = -120 + 240 * (i / 2) - 5
+            speed *= -1
+        else:
+            direcao = 'd'
+            posix = 0 - CAR_WIDTH
+            posiy = -120 + 240 * (i // 2) + 50
+            speed = speed
+
+        colour = random.randint(1, 3)
+        if colour == 1:
+            colour = 'r'
+        elif colour == 2:
+            colour = 'y'
+        else:
+            colour = 'b'
+
+        self.assets = assets
+        self.direcao = direcao
+        self.image = assets[colour+direcao]
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-
-        self.rect.x = 0
-        self.rect.y = -120 + 240 * i
+        self.rect.x = posix
+        self.rect.y = posiy
+        self.speed = speed
 
     def update(self):
-        self.rect.x += 10
+        self.rect.x += self.speed
 
-        if self.rect.left > WIDTH:
-            self.rect.x = 0
+        speed = random.randint(8, 15)
 
-        if self.rect.top > HEIGHT:
-            self.rect.y = 0
+        colour = random.randint(1, 3)
+        if colour == 1:
+            colour = 'r'
+        elif colour == 2:
+            colour = 'y'
+        else:
+            colour = 'b'
 
+        if self.direcao == 'e':
+            if self.rect.right < 0:
+                self.image = self.assets[colour+self.direcao]
+                self.mask = pygame.mask.from_surface(self.image)
+                self.rect.x = WIDTH
+                self.speed = - speed
+            if self.rect.centery > HEIGHT:
+                self.rect.y = -120 - 20
+        else:
+            if self.rect.left > WIDTH:
+                self.image = self.assets[colour+self.direcao]
+                self.mask = pygame.mask.from_surface(self.image)
+                self.rect.right = 0
+                self.speed = speed
+            if self.rect.top > HEIGHT:
+                self.rect.y = -120 + 35
 
     def down(self):
         self.rect.y += 120

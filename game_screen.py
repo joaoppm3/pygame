@@ -10,12 +10,12 @@ def game_screen(window):
 
     all_sprites = pygame.sprite.Group()
     all_cars = pygame.sprite.Group()
-    cars = [0] * 3
+    cars = [0] * 6
 
     player = Player(assets)
     all_sprites.add(player)
 
-    for i in range (0, 3):
+    for i in range (0, 6):
         carro = Obstacle(assets, i)
         all_cars.add(carro)
         all_sprites.add(carro)
@@ -46,7 +46,7 @@ def game_screen(window):
                         player.direction = 'b'
                         if player.rect.top == HEIGHT * 1 / 5:
                             cenario *= -1
-                            for i in range (0, 3):
+                            for i in range (0, 6):
                                 cars[i].down()
                     if event.key == pygame.K_DOWN:
                         player.rect.y += 120

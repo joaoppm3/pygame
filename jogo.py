@@ -12,7 +12,7 @@ pygame.mixer.init()
 window = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('.')
 
-state = INIT
+state = GAME
 while state != QUIT:
     if state == INIT:
         state = init_screen(window)
