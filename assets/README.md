@@ -37,3 +37,10 @@ A pergunta que não quer calar é "Por que a galinha atravessou a rua?" e nesse 
 ├── game_over_screen.py    # Tela de fim de jogo
 ├── info_screen.py         # Tela de informações sobre o jogo
 ├── jogo.py                # Arquivo principal que gerencia os estados
+
+# Video de demonstração
+
+A seguir um video curto postado no Youtube demonstrando todo o funcionamento do jogo (de tela de início, gameplay e gameover)
+
+https://youtube.com/shorts/3-xE15UAGtE?si=4R9DzsXpYywBr0M1
+
